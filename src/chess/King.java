@@ -1,8 +1,6 @@
-package chess.pieces;
+package chess;
 
 import boardgame.Board;
-import chess.ChessPiece;
-import chess.enums.Color;
 
 public class King extends ChessPiece {
     public King(Board board, Color color) {
