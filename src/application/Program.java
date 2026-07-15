@@ -36,10 +36,7 @@ public class Program {
                 if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
-            } catch (ChessException e) {
-                System.out.print(e.getMessage());
-                scanner.nextLine();
-            } catch (InputMismatchException e) {
+            } catch (ChessException | InputMismatchException e) {
                 System.out.print(e.getMessage());
                 scanner.nextLine();
             }
