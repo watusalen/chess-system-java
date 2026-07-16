@@ -5,9 +5,14 @@ import boardgame.Position;
 import chess.ChessPiece;
 import chess.Color;
 
-public class Rook extends ChessPiece {
-    public Rook(Board board, Color color) {
+public class Bishop extends ChessPiece {
+    public Bishop(Board board, Color color) {
         super(board, color);
+    }
+
+    @Override
+    public String toString() {
+        return "B";
     }
 
     @Override
@@ -16,51 +21,46 @@ public class Rook extends ChessPiece {
 
         Position p = new Position(0, 0);
 
-        // cima
-        p.setValues(position.getRow() - 1, position.getColumn());
+        // noroeste
+        p.setValues(position.getRow() - 1, position.getColumn() - 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() - 1);
+            p.setValues(p.getRow() - 1, p.getColumn() - 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
         }
 
-        // esquerda
-        p.setValues(position.getRow(), position.getColumn() - 1);
+        // nordeste
+        p.setValues(position.getRow() - 1, position.getColumn() + 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
-            p.setColumn(p.getColumn() - 1);
+            p.setValues(p.getRow() - 1, p.getColumn() + 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
         }
 
-        // direita
-        p.setValues(position.getRow(), position.getColumn() + 1);
+        // sudeste
+        p.setValues(position.getRow() + 1, position.getColumn() + 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
-            p.setColumn(p.getColumn() + 1);
+            p.setValues(p.getRow() + 1, p.getColumn() + 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
         }
 
-        // baixo
-        p.setValues(position.getRow() + 1, position.getColumn());
+        // sudoeste
+        p.setValues(position.getRow() + 1, position.getColumn() - 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() + 1);
+            p.setValues(p.getRow() + 1, p.getColumn() - 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             matrix[p.getRow()][p.getColumn()] = true;
         }
 
         return matrix;
-    }
-
-    @Override
-    public String toString() {
-        return "R";
     }
 }
